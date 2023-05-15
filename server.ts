@@ -31,8 +31,8 @@ const router = express.Router();
      */
 
 
-    const myDb = new Database();
-    console.log(myDb.connect());
+ 
+    console.log(Database.connectDb);
 
     app.use(async (req, res, next) => {
 

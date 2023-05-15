@@ -1,19 +1,19 @@
-// import DBTable from "./DBTable";
+import DBTable from "./DBTable";
 import Database from "./Database";
 
 export default class ContextModel {
 
-    private readonly Database: Database
+    private readonly Database;
 
-    constructor(db: Database){
+    constructor(db: any){
         this.Database = db;
     }
 
-    myDb = new Database();
+ 
 
    public getTable<T>(name: string, pk = "id") {
 
-   //     return new DBTable<T>(this.Database, name, pk);
+      return new DBTable(this.Database, name, pk);
    }
 
     async beginTransaction(name: string): Promise<void> {

@@ -8,28 +8,34 @@ const sequelize = new Sequelize("auth_management", "root", '', {
 });
 
 
-
-
-
-export default class Database{
+ class Database{
 
     constructor(){
 
     }
-
-
-   async connect(){
+    
+      async connect(){
         try {
             await sequelize.authenticate();
             console.log('Connection has been established successfully.');
           } catch (error) {
             console.error('Unable to connect to the database:', error);
           }
-    }
+     }
 
     getDb(){
         return sequelize;
     }
 
+}
+
+
+const myDb = new Database();
+
+
+
+export default {
+    connectDb: myDb.connect(),
+    dbInstance: myDb
 }
 
